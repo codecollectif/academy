@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f8845ec6ee2bdcd2ce6804f4a65e1a2a",
+    "content-hash": "a680b28e686711f39889862f224a04ac",
     "packages": [
         {
             "name": "composer/semver",
@@ -3474,12 +3474,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/form.git",
-                "reference": "2129902c5052f696b6fa7d11dab52ff6d8aa1053"
+                "reference": "952f37451b33d81dba1eff32020f7ddf3f7c1852"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/form/zipball/2129902c5052f696b6fa7d11dab52ff6d8aa1053",
-                "reference": "2129902c5052f696b6fa7d11dab52ff6d8aa1053",
+                "url": "https://api.github.com/repos/symfony/form/zipball/952f37451b33d81dba1eff32020f7ddf3f7c1852",
+                "reference": "952f37451b33d81dba1eff32020f7ddf3f7c1852",
                 "shasum": ""
             },
             "require": {
@@ -3564,7 +3564,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-07-07T12:41:39+00:00"
+            "time": "2025-07-16T09:26:03+00:00"
         },
         {
             "name": "symfony/framework-bundle",
@@ -7124,12 +7124,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/validator.git",
-                "reference": "dc1abe6205dafab79f84b50c2c50cb799296c34d"
+                "reference": "1de1a859d9e01b24bbec253f3214fff44ec07407"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/validator/zipball/dc1abe6205dafab79f84b50c2c50cb799296c34d",
-                "reference": "dc1abe6205dafab79f84b50c2c50cb799296c34d",
+                "url": "https://api.github.com/repos/symfony/validator/zipball/1de1a859d9e01b24bbec253f3214fff44ec07407",
+                "reference": "1de1a859d9e01b24bbec253f3214fff44ec07407",
                 "shasum": ""
             },
             "require": {
@@ -7214,7 +7214,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-07-09T09:57:56+00:00"
+            "time": "2025-07-16T12:15:46+00:00"
         },
         {
             "name": "symfony/var-dumper",
