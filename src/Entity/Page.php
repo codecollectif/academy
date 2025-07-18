@@ -21,7 +21,7 @@ class Page
 
     #[ORM\ManyToOne(inversedBy: 'pages')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Category $category = null;
+    private ?Category $category; // ici j'enlève null comme ullable fause dans la databse
 
     public function getId(): ?int
     {
