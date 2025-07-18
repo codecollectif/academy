@@ -16,7 +16,7 @@ class PageType extends AbstractType
         $builder
             ->add('titleJson')
             ->add('contentJson')
-            ->add('Category', EntityType::class, [
+            ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'id',
             ])
