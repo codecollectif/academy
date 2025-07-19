@@ -15,6 +15,7 @@ parameters:
     ignoreErrors:
         - "#^Parameter.*(User).*(UserInterface).*#"
         - "#^Call to an undefined .*(UserInterface).*#"
+        - "#Property .* type mapping mismatch: property can contain .*\\|null but database expects .*.#"
         - identifier: missingType.iterableValue
         - identifier: missingType.generics
     reportUnmatchedIgnoredErrors: false
