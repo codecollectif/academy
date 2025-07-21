@@ -21,7 +21,7 @@ class Page
 
     #[ORM\ManyToOne(inversedBy: 'pages')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Category $category; // ici j'enlève null comme ullable fause dans la databse
+    private ?Category $category = null;
 
     public function getId(): ?int
     {
@@ -54,12 +54,12 @@ class Page
 
     public function getCategory(): ?Category
     {
-        return $this->category; //remplacé minuscule c
+        return $this->category;
     }
 
     public function setCategory(?Category $category): static
     {
-        $this->category = $category; //modif
+        $this->category = $category;
 
         return $this;
     }
