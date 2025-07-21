@@ -54,7 +54,7 @@ class Page
 
     public function getCategory(): ?Category
     {
-        return $this->category; //remplacé minuscule c 
+        return $this->category; //remplacé minuscule c
     }
 
     public function setCategory(?Category $Category): static
