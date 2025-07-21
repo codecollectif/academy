@@ -57,9 +57,9 @@ class Page
         return $this->category; //remplacé minuscule c
     }
 
-    public function setCategory(?Category $Category): static
+    public function setCategory(?Category $category): static
     {
-        $this->Category = $category; //modif
+        $this->category = $category; //modif
 
         return $this;
     }
