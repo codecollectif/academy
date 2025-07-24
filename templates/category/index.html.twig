@@ -9,7 +9,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>TitleJson</th>
+                <th>Titre</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -17,7 +17,7 @@
         {% for category in categories %}
             <tr>
                 <td>{{ category.id }}</td>
-                <td>{{ category.titleJson ? category.titleJson|json_encode : '' }}</td>
+                <td>{{ category.titleJson ? category.titleJson.fr : '' }}</td>
                 <td>
                     <a href="{{ path('app_category_show', {'id': category.id}) }}">show</a>
                     <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
