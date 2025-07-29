@@ -12,8 +12,8 @@
                 <td>{{ category.id }}</td>
             </tr>
             <tr>
-                <th>TitleJson</th>
-                <td>{{ category.titleJson ? category.titleJson|json_encode : '' }}</td>
+                <th>Titre</th>
+                <td>{{ category.titleJson ? category.titleJson.fr : '' }}</td> //modif
             </tr>
         </tbody>
     </table>

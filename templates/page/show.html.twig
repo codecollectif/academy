@@ -12,12 +12,12 @@
                 <td>{{ page.id }}</td>
             </tr>
             <tr>
-                <th>TitleJson</th>
-                <td>{{ page.titleJson ? page.titleJson|json_encode : '' }}</td>
+                <th>Titre</th> //modif
+                <td>{{ page.titleJson ? page.titleJson.fr : '' }}</td>
             </tr>
             <tr>
-                <th>ContentJson</th>
-                <td>{{ page.contentJson ? page.contentJson|json_encode : '' }}</td>
+                <th>Contenu</th> //modif
+                <td>{{ page.contentJson ? page.contentJson.fr : '' }}</td>
             </tr>
         </tbody>
     </table>
