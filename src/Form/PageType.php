@@ -22,7 +22,6 @@ class PageType extends AbstractType
                 'choice_label' => 'id',
             ])
         ;
-    
 
         $builder->get('titleJson')
             ->addModelTransformer(new CallbackTransformer(
