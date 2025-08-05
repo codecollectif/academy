@@ -34,7 +34,7 @@ class PageType extends AbstractType
                     return ["fr" => $title];
                 }
             ));
-    
+
         $builder->get('contentJson')
             ->addModelTransformer(new CallbackTransformer(
                 function (?array $contentJson): string {
@@ -45,7 +45,7 @@ class PageType extends AbstractType
                 }
             ));
     }
-     
+
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
