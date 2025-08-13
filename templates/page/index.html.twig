@@ -9,8 +9,8 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>TitleJson</th>
-                <th>ContentJson</th>
+                <th>Titre</th>
+                <th>Contenu</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -18,8 +18,8 @@
         {% for page in pages %}
             <tr>
                 <td>{{ page.id }}</td>
-                <td>{{ page.titleJson ? page.titleJson|json_encode : '' }}</td>
-                <td>{{ page.contentJson ? page.contentJson|json_encode : '' }}</td>
+                <td>{{ page.titleJson ? page.titleJson.fr : '' }}</td>
+                <td>{{ page.contentJson ? page.contentJson.fr : '' }}</td>
                 <td>
                     <a href="{{ path('app_page_show', {'id': page.id}) }}">show</a>
                     <a href="{{ path('app_page_edit', {'id': page.id}) }}">edit</a>
