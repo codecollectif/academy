@@ -9,7 +9,6 @@ use App\Entity\User;
 
 class UserFixtures extends Fixture
 {
-
     public function __construct(
         private readonly UserPasswordHasherInterface $passwordHasher
     ) {
@@ -30,7 +29,7 @@ class UserFixtures extends Fixture
 
         $plainPassword = "lepiremotdepasseadminaumonde";
         $hashedPassword = $this->passwordHasher->hashPassword($admin, $plainPassword);
-        
+
         $admin->setPassword($hashedPassword);
         $admin->setEmail("admin@boulot.fr");
         $admin->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
