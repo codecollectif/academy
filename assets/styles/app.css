@@ -1,15 +1,38 @@
+body {
+    margin: 0;
+}
+
 nav {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-gap: 10px;
     grid-auto-rows: minmax(50px, auto);
+    margin-bottom: 25px;
+    border-bottom: solid;
+    border-color: gray;
+    border-width: 1px;
+    width: 100vw;
 }
 
-nav.a {
+nav a {
+    justify-self: center;
+    font-size: 20px;
+    align-self: center;
     grid-column: 10;
+    text-align: center;
+}
+
+nav div a {
+    font-size: 30px;
+}
+
+nav div {
+    justify-self: center;
+    align-self: center;
 }
 
 .email {
+    font-size: 20px;
     grid-column: 9;
 }
 
