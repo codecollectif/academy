@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7b6b0792a04716f70ee993a46abcc67e",
+    "content-hash": "301b17a2824043cdf08d5c5ca9b70612",
     "packages": [
         {
             "name": "composer/semver",
@@ -4644,12 +4644,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/password-hasher.git",
-                "reference": "9bec6837d8410eb164a373617806f7d2d26bd1af"
+                "reference": "aa075ce6f54fe931f03c1e382597912f4fd94e1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/password-hasher/zipball/9bec6837d8410eb164a373617806f7d2d26bd1af",
-                "reference": "9bec6837d8410eb164a373617806f7d2d26bd1af",
+                "url": "https://api.github.com/repos/symfony/password-hasher/zipball/aa075ce6f54fe931f03c1e382597912f4fd94e1e",
+                "reference": "aa075ce6f54fe931f03c1e382597912f4fd94e1e",
                 "shasum": ""
             },
             "require": {
@@ -4704,11 +4704,15 @@
                     "type": "github"
                 },
                 {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
                     "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-06-02T14:13:49+00:00"
+            "time": "2025-08-13T16:46:49+00:00"
         },
         {
             "name": "symfony/polyfill-intl-grapheme",
