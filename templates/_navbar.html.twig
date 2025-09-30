@@ -1,4 +1,10 @@
 <nav>
+    <div class="home">
+        <a href={{ path('app_home') }}>Accueil</a>
+    </div>
+    <div class="pages">
+        <a href={{ path(app.user ? 'app_page_index' : 'app_login') }}>Pages</a>
+    </div>
     {% if app.user %}
         <div class="email">
             {{ app.user.email }}

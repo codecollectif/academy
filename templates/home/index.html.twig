@@ -3,12 +3,6 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-{{ include('_navbar.html.twig')}}
-    <div class="pink-stripe">
-        <h1>
-            <a href={{ path(app.user ? 'app_page_index' : 'app_login') }}>Let's start coding&nbsp;&#129304;</a>
-        </h1>
-    </div>
     <div class="white-stripe">
         <img src="{{ asset('images/logo-wild-code-school.svg') }}"
              alt="">
