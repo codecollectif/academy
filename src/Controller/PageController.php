@@ -25,6 +25,7 @@ final class PageController extends AbstractController
     #[Route('/new', name: 'app_page_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $page = new Page();
         $form = $this->createForm(PageType::class, $page);
         $form->handleRequest($request);
@@ -53,6 +54,7 @@ final class PageController extends AbstractController
     #[Route('/{id}/edit', name: 'app_page_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Page $page, EntityManagerInterface $entityManager): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $form = $this->createForm(PageType::class, $page);
         $form->handleRequest($request);
 
@@ -71,6 +73,7 @@ final class PageController extends AbstractController
     #[Route('/{id}', name: 'app_page_delete', methods: ['POST'])]
     public function delete(Request $request, Page $page, EntityManagerInterface $entityManager): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         if ($this->isCsrfTokenValid('delete' . $page->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($page);
             $entityManager->flush();

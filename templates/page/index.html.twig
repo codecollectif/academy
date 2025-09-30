@@ -22,7 +22,9 @@
                 <td>{{ page.contentJson ? page.contentJson.fr : '' }}</td>
                 <td>
                     <a href="{{ path('app_page_show', {'id': page.id}) }}">show</a>
+                    {% if 'ROLE_ADMIN' in app.user.roles %}
                     <a href="{{ path('app_page_edit', {'id': page.id}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -33,5 +35,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_page_new') }}">Create new</a>
+    {% if 'ROLE_ADMIN' in app.user.roles %}
+        <a href="{{ path('app_page_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}
