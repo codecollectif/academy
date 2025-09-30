@@ -3,7 +3,7 @@
 {% block title %}Page index{% endblock %}
 
 {% block body %}
-    <h1>Page index</h1>
+    <h1>Liste des pages</h1>
 
     <table class="table">
         <thead>
@@ -21,21 +21,21 @@
                 <td>{{ page.titleJson ? page.titleJson.fr : '' }}</td>
                 <td>{{ page.contentJson ? page.contentJson.fr : '' }}</td>
                 <td>
-                    <a href="{{ path('app_page_show', {'id': page.id}) }}">show</a>
+                    <a href="{{ path('app_page_show', {'id': page.id}) }}">Plus d'infos</a>
                     {% if 'ROLE_ADMIN' in app.user.roles %}
-                    <a href="{{ path('app_page_edit', {'id': page.id}) }}">edit</a>
+                    <a href="{{ path('app_page_edit', {'id': page.id}) }}">Editer</a>
                     {% endif %}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Aucune page n'a été enregistré</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
     {% if 'ROLE_ADMIN' in app.user.roles %}
-        <a href="{{ path('app_page_new') }}">Create new</a>
+        <a href="{{ path('app_page_new') }}">Créer une nouvelle page</a>
     {% endif %}
 {% endblock %}
