@@ -31,15 +31,20 @@ nav div {
     align-self: center;
 }
 
+.navheader {
+    font-size: 60px;
+    grid-column: 2-3;
+}
+
 .email {
     font-size: 20px;
     grid-column: 9;
 }
 
 .home {
-    grid-column: 4;
+    grid-column: 3;
 }
 
 .pages {
-    grid-column: 5;
+    grid-column: 4;
 }
