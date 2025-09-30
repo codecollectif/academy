@@ -1,6 +1,10 @@
-{% if app.user %}
-    {{ app.user.email }}
-    <a href={{ path('app_logout') }}> Se déconnecter</a>
-{% else %}
-    <a href={{ path('app_login') }}> Se connecter</a>
-{% endif %}
+<nav>
+    {% if app.user %}
+        <div class="email">
+            {{ app.user.email }}
+        </div>
+        <a href={{ path('app_logout') }}> Se déconnecter</a>
+    {% else %}
+        <a href={{ path('app_login') }}> Se connecter</a>
+    {% endif %}
+</nav>

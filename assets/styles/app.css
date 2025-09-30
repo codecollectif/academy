@@ -1,2 +1,14 @@
-/* start coding by removing this file and adding yours ;) */
-@import url("_wcs.css");
+nav {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(50px, auto);
+}
+
+nav.a {
+    grid-column: 5;
+}
+
+.email {
+    grid-column: 1;
+}
