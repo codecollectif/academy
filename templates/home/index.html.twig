@@ -3,6 +3,12 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
+{% if app.user %}
+    {{ app.user.email }}
+    <a href={{ path('app_logout') }}> Se déconnecter</a>
+{% else %}
+    <a href={{ path('app_login') }}> Se connecter</a>
+{% endif %}
     <div class="pink-stripe">
         <h1>
             Let's start coding&nbsp;&#129304;
