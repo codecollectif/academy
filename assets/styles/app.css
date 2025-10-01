@@ -27,9 +27,13 @@ nav ul {
     list-style: none;
 }
 
-nav li, nav div {
+nav li, nav p, nav h1 {
     justify-self: center;
     align-self: center;
+}
+
+nav h1 {
+    margin: 0;
 }
 
 .navheader {

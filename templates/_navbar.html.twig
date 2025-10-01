@@ -1,7 +1,7 @@
 <nav>
-    <div class="navheader">
+    <h1 class="navheader">
         Site
-    </div>
+    </h1>
     <ul>
         <li class="home">
             <a href={{ path('app_home') }}>Accueil</a>
@@ -20,8 +20,8 @@
         {% endif %}
     </ul>
     {% if app.user %}
-    <div class="email">
+    <p class="email">
         {{ app.user.email }}
-    </div>
+    </p>
     {% endif %}
 </nav>
