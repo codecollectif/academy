@@ -3,8 +3,10 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-    <div class="white-stripe">
-        <img src="{{ asset('images/logo-wild-code-school.svg') }}"
-             alt="">
-    </div>
+    <main>
+        <p> Développez vos compétences de programmation web à l'aide de leçons disponibles gratuitement.</p>
+    </main>
+    <section>
+        <a href={{path('app_login')}}><p>Inscription</p></a>
+    </section>
 {% endblock %}
