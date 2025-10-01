@@ -19,17 +19,19 @@
                 <td>{{ category.id }}</td>
                 <td>{{ category.titleJson ? category.titleJson.fr : '' }}</td>
                 <td>
-                    <a href="{{ path('app_category_show', {'id': category.id}) }}">Plus d'infos</a>
-                    <a href="{{ path('app_category_edit', {'id': category.id}) }}">Editer</a>
+                    <a href="{{ path('app_category_show', {'id': page.id}) }}">Plus d'infos</a>
+                    {% if 'ROLE_ADMIN' in app.user.roles %}
+                    <a href="{{ path('app_category_edit', {'id': page.id}) }}">Éditer</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">Aucune catégorie n'a été enregistré</td>
+                <td colspan="3">Aucune entrée disponible</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_category_new') }}">Créer une nouvelle catégorie</a>
+    <a href="{{ path('app_category_new') }}">Ajouter</a>
 {% endblock %}

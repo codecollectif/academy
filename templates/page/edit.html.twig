@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edition de page{% endblock %}
+{% block title %}Édition de page{% endblock %}
 
 {% block body %}
-    <h1>Edition de la page {{page.titleJson.fr}}</h1>
+    <h1>Édition de la page {{page.titleJson.fr}}</h1>
 
     {{ include('page/_form.html.twig', {'button_label': 'Modifier'}) }}
 
