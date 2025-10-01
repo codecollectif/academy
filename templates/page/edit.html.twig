@@ -2,7 +2,7 @@
 
 {% block title %}Édition de page{% endblock %}
 
-{% block body %}
+{% block main %}
     <h1>Édition de la page {{page.titleJson.fr}}</h1>
 
     {{ include('page/_form.html.twig', {'button_label': 'Modifier'}) }}
