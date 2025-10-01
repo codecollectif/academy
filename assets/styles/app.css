@@ -102,5 +102,9 @@ body {
 }
 
 .linkedin {
-    grid-column: 1;
+    grid-column: 2;
+}
+
+.helloasso {
+    grid-column: 1
 }
