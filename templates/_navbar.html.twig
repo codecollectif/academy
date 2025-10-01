@@ -1,0 +1,27 @@
+<nav>
+    <h1 class="navheader">
+        Site
+    </h1>
+    <ul>
+        <li class="home">
+            <a href={{ path('app_home') }}>Accueil</a>
+        </li>
+        <li class="pages">
+            <a href={{ path(app.user ? 'app_page_index' : 'app_login') }}>Pages</a>
+        </li>
+        {% if app.user %}
+        <li class="authentification">
+            <a href={{ path('app_logout') }}> Se déconnecter</a>
+        </li>
+        {% else %}
+        <li class="authentification">
+            <a href={{ path('app_login') }}> Se connecter</a>
+        </li>
+        {% endif %}
+    </ul>
+    {% if app.user %}
+    <p class="email">
+        {{ app.user.email }}
+    </p>
+    {% endif %}
+</nav>

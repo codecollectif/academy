@@ -1,2 +1,63 @@
-/* start coding by removing this file and adding yours ;) */
-@import url("_wcs.css");
+body {
+    margin: 0;
+}
+
+nav {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(50px, auto);
+    margin-bottom: 25px;
+    border-bottom: solid;
+    border-color: gray;
+    border-width: 1px;
+    width: 100vw;
+}
+
+nav a {
+    font-size: 30px;
+}
+
+nav ul {
+    display: grid;
+    grid-column: 2/9;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 50px;
+    grid-auto-rows: minmax(50px, auto);
+    list-style: none;
+}
+
+nav li, nav p, nav h1 {
+    justify-self: center;
+    align-self: center;
+}
+
+nav h1 {
+    margin: 0;
+}
+
+.navheader {
+    font-size: 60px;
+    grid-column: 1;
+}
+
+.email {
+    font-size: 20px;
+    grid-column: 9;
+}
+
+.authentification {
+    grid-column: 8/10;
+}
+
+.authentification a {
+    font-size: 25px;
+}
+
+.home {
+    grid-column: 3;
+}
+
+.pages {
+    grid-column: 4;
+}

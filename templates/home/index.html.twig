@@ -3,17 +3,6 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-{% if app.user %}
-    {{ app.user.email }}
-    <a href={{ path('app_logout') }}> Se déconnecter</a>
-{% else %}
-    <a href={{ path('app_login') }}> Se connecter</a>
-{% endif %}
-    <div class="pink-stripe">
-        <h1>
-            <a href={{ path(app.user ? 'app_page_index' : 'app_login') }}>Let's start coding&nbsp;&#129304;</a>
-        </h1>
-    </div>
     <div class="white-stripe">
         <img src="{{ asset('images/logo-wild-code-school.svg') }}"
              alt="">
