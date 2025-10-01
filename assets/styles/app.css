@@ -15,30 +15,39 @@ nav {
 }
 
 nav a {
-    justify-self: center;
-    font-size: 20px;
-    align-self: center;
-    grid-column: 10;
-    text-align: center;
-}
-
-nav div a {
     font-size: 30px;
 }
 
-nav div {
+nav ul {
+    display: grid;
+    grid-column: 2/9;
+    grid-template-columns: repeat(10, 1fr);
+    grid-gap: 50px;
+    grid-auto-rows: minmax(50px, auto);
+    list-style: none;
+}
+
+nav li, nav div {
     justify-self: center;
     align-self: center;
 }
 
 .navheader {
     font-size: 60px;
-    grid-column: 2-3;
+    grid-column: 1;
 }
 
 .email {
     font-size: 20px;
     grid-column: 9;
+}
+
+.authentification {
+    grid-column: 8/10;
+}
+
+.authentification a {
+    font-size: 25px;
 }
 
 .home {
