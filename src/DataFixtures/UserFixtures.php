@@ -24,6 +24,7 @@ class UserFixtures extends Fixture
         $contributer->setPassword($hashedPassword);
         $contributer->setEmail("exemple123@blabla.fr");
         $contributer->setRoles(['ROLE_USER']);
+        $contributer->setIsVerified(true);
 
         $admin = new User();
 
@@ -33,6 +34,7 @@ class UserFixtures extends Fixture
         $admin->setPassword($hashedPassword);
         $admin->setEmail("admin@boulot.fr");
         $admin->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
+        $admin->setIsVerified(true);
 
         $manager->persist($contributer);
         $manager->persist($admin);
