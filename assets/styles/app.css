@@ -62,7 +62,7 @@ body {
     grid-column: 4;
 }
 
-.footer {
+footer {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-gap: 10px;
@@ -74,11 +74,11 @@ body {
     width: 100vw;
 }
 
-.footer a {
+footer a {
     font-size: 30px;
 }
 
-.footer ul {
+footer ul {
     display: grid;
     grid-column: 3/10;
     grid-template-columns: repeat(10, 1fr);
@@ -87,12 +87,12 @@ body {
     list-style: none;
 }
 
-.footer li, .footer p, .footer h1 {
+footer li, .footer p, .footer h1 {
     justify-self: center;
     align-self: center;
 }
 
-.footer h1 {
+footer h1 {
     margin: 0;
 }
 
