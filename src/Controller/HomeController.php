@@ -13,7 +13,11 @@ class HomeController extends AbstractController
     public function index(PageRepository $pageRepository): Response
     {
         return $this->render('home/index.html.twig', [
-            'pages' => $pageRepository->findLastXPages(10),
+            'pages' => $pageRepository->findBy(
+                array(),
+                array('id' => 'DESC'),
+                10
+            ),
         ]);
     }
 

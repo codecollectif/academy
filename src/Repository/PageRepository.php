@@ -16,18 +16,6 @@ class PageRepository extends ServiceEntityRepository
         parent::__construct($registry, Page::class);
     }
 
-        /**
-         * @return Page[] Returns an array of Page objects
-         */
-    public function findLastXPages(int $var): array
-    {
-        return $this->createQueryBuilder('p')
-            ->orderBy('p.id', 'DESC')
-            ->setMaxResults($var)
-            ->getQuery()
-            ->getResult();
-    }
-
     //    public function findOneBySomeField($value): ?Page
     //    {
     //        return $this->createQueryBuilder('p')
