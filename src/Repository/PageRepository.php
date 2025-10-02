@@ -19,15 +19,14 @@ class PageRepository extends ServiceEntityRepository
         /**
          * @return Page[] Returns an array of Page objects
          */
-        public function findLastXPages(int $x): array
-        {
-            return $this->createQueryBuilder('p')
-                ->orderBy('p.id', 'DESC')
-                ->setMaxResults($x)
-                ->getQuery()
-                ->getResult()
-            ;
-        }
+    public function findLastXPages(int $var): array
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.id', 'DESC')
+            ->setMaxResults($var)
+            ->getQuery()
+            ->getResult();
+    }
 
     //    public function findOneBySomeField($value): ?Page
     //    {
