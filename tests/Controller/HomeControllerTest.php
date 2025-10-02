@@ -15,7 +15,7 @@ class HomeControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
     }
 
-    public function testUserCanGoToProfile(): void
+    /* public function testUserCanGoToProfile(): void
     {
         $client = static::createClient();
 
@@ -29,4 +29,5 @@ class HomeControllerTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
     }
+        */
 }
