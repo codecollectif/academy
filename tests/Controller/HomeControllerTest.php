@@ -14,20 +14,4 @@ class HomeControllerTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
     }
-
-    /* public function testUserCanGoToProfile(): void
-    {
-        $client = static::createClient();
-
-        $userRepository = static::getContainer()->get(UserRepository::class);
-
-        $testUser = $userRepository->findOneByEmail('exemple123@blabla.fr ');
-
-        $client->loginUser($testUser);
-
-        $crawler = $client->request('GET', '/my-profile');
-
-        $this->assertResponseIsSuccessful();
-    }
-        */
 }
