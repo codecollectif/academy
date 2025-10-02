@@ -4,6 +4,7 @@ namespace App\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use App\Repository\PageRepository;
+use App\Repository\UserRepository;
 use App\Entity\Page;
 use App\Entity\Category;
 use App\Controller\HomeController;
@@ -36,6 +37,21 @@ class HomeControllerTest extends WebTestCase
         $container->set(PageRepository::class, $pageRepository);
 
         $crawler = $client->request('GET', '/');
+
+        $this->assertResponseIsSuccessful();
+    }
+
+    public function testUserCanGoToProfile(): void
+    {
+        $client = static::createClient();
+
+        $userRepository = static::getContainer()->get(UserRepository::class);
+
+        $testUser = $userRepository->findOneByEmail('exemple123@blabla.fr ');
+
+        $client->loginUser($testUser);
+
+        $crawler = $client->request('GET', '/my-profile');
 
         $this->assertResponseIsSuccessful();
     }
