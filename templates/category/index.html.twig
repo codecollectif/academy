@@ -19,9 +19,9 @@
                 <td>{{ category.id }}</td>
                 <td>{{ category.titleJson ? category.titleJson.fr : '' }}</td>
                 <td>
-                    <a href="{{ path('app_category_show', {'id': page.id}) }}">Plus d'infos</a>
+                    <a href="{{ path('app_category_show', {'id': category.id}) }}">Plus d'infos</a>
                     {% if 'ROLE_ADMIN' in app.user.roles %}
-                    <a href="{{ path('app_category_edit', {'id': page.id}) }}">Éditer</a>
+                    <a href="{{ path('app_category_edit', {'id': category.id}) }}">Éditer</a>
                     {% endif %}
                 </td>
             </tr>
