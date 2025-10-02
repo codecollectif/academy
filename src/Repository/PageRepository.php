@@ -16,20 +16,18 @@ class PageRepository extends ServiceEntityRepository
         parent::__construct($registry, Page::class);
     }
 
-    //    /**
-    //     * @return Page[] Returns an array of Page objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('p')
-    //            ->andWhere('p.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('p.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+        /**
+         * @return Page[] Returns an array of Page objects
+         */
+        public function findLastXPages(int $x): array
+        {
+            return $this->createQueryBuilder('p')
+                ->orderBy('p.id', 'DESC')
+                ->setMaxResults($x)
+                ->getQuery()
+                ->getResult()
+            ;
+        }
 
     //    public function findOneBySomeField($value): ?Page
     //    {

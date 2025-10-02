@@ -4,8 +4,15 @@
 
 
 {% block main %}
-    <div class="white-stripe">
-        <img src="{{ asset('images/logo-wild-code-school.svg') }}"
-             alt="">
-    </div>
+        <p> Développez vos compétences de programmation web à l'aide de leçons disponibles gratuitement.</p>
+        <section>
+            <h2>Nouveautés</h2>
+                <ul>
+                    {% for page in pages %}
+                        <li>
+                            {{page.titleJson.fr}}
+                        </li>
+                    {% endfor %}
+                </ul>
+        </section>
 {% endblock %}
