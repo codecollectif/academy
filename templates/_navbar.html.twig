@@ -2,6 +2,11 @@
     <h1 class="navheader">
         Site
     </h1>
+    {% if app.user %}
+    <p class="email">
+        {{ app.user.email }}
+    </p>
+    {% endif %}
     <ul>
         <li class="home">
             <a href={{ path('app_home') }}>Accueil</a>
@@ -10,11 +15,11 @@
             <a href={{ path(app.user ? 'app_page_index' : 'app_login') }}>Pages</a>
         </li>
         {% if app.user %}
-        <li class="authentification">
-            <a href={{ path('app_logout') }}> Se déconnecter</a>
-        </li>
         <li class="profile">
             <a href={{ path('app_my_profile') }}> Mon compte</a>
+        </li>
+        <li class="authentification">
+            <a href={{ path('app_logout') }}> Se déconnecter</a>
         </li>
         {% else %}
         <li class="register">
@@ -25,9 +30,4 @@
         </li>
         {% endif %}
     </ul>
-    {% if app.user %}
-    <p class="email">
-        {{ app.user.email }}
-    </p>
-    {% endif %}
 </nav>
