@@ -23,11 +23,10 @@ main {
 }
 
 .navbar ul {
-    display: grid;
-    grid-column: 2/9;
-    grid-template-columns: repeat(10, 1fr);
-    grid-gap: 50px;
-    grid-auto-rows: minmax(50px, auto);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
     list-style: none;
 }
 
