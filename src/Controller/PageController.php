@@ -18,10 +18,22 @@ final class PageController extends AbstractController
     #[Route(name: 'app_page_index', methods: ['GET'])]
     public function index(PageRepository $pageRepository, Request $request): Response
     {
-        $form = $this->createForm(ResearchPageType::class);
+        $form = $this->createForm(ResearchPageType::class, [], [
+            'method' => 'GET',
+        ]);
         $form->handleRequest($request);
+
+        $pagesToShow = $pageRepository->findAll();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $researchQuery = $form->getData();
+            $pagesToShow = $pageRepository->findByResearch('fr', $researchQuery['Rechercher']);
+        }
+
+        var_dump($pageRepository->find(22)->getTitleJson());
+
         return $this->render('page/index.html.twig', [
-            'pages' => $pageRepository->findAll(), 'form' => $form
+            'pages' => $pagesToShow, 'form' => $form
         ]);
     }
 

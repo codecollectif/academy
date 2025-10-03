@@ -1,4 +1,5 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <input type="hidden" name="_token" value="{{ csrf_token('recherche') }}">
+    <button class="btn">{{ button_label|default('Rechercher') }}</button>
 {{ form_end(form) }}

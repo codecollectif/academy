@@ -20,7 +20,7 @@ class ResearchPageType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Page::class,
+            'data_class' => null,
         ]);
     }
 }
