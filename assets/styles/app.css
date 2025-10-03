@@ -16,6 +16,10 @@ main {
     justify-content: space-between;
     gap: 1rem;
     border-bottom: 1px solid gray;
+    background: url(../images/wood.jpg) repeat;
+    background-color: #BA8C63;
+    background-size: auto 300%;
+    background-position: center;
 }
 
 .navbar ul {
@@ -47,6 +51,10 @@ footer {
     padding: 1rem;
     text-align: center;
     border-top: 1px solid gray;
+    background: url(../images/water.webp) repeat;
+    background-color: black;
+    color: white;
+    text-shadow: 0 0 5px black;
 }
 
 footer p {
@@ -60,6 +68,10 @@ footer ul {
     display: inline-flex;
     gap: 1ch;
     list-style: none;
+}
+
+footer a {
+    color: inherit;
 }
 
 .linkedin {
