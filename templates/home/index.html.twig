@@ -5,14 +5,16 @@
 
 {% block main %}
         <p> Développez vos compétences de programmation web à l'aide de leçons disponibles gratuitement.</p>
-        <section>
+        <section class="newestPages">
             <h2>Nouveautés</h2>
-                <ul>
+                <div class="newPagesList">
                     {% for page in pages %}
-                        <li>
-                            {{page.titleJson.fr}}
-                        </li>
+                        <a href={{path("app_page_show", {id: page.id})}}>
+                            <div>
+                                <p>{{page.titleJson.fr}} </p>
+                            </div>
+                        </a>
                     {% endfor %}
-                </ul>
+                </div>
         </section>
 {% endblock %}
