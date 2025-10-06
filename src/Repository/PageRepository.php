@@ -20,13 +20,27 @@ class PageRepository extends ServiceEntityRepository
     public function findByResearch(string $value): array
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('JSON_EXTRACT(p.titleJson, :key) LIKE :val')
+            ->andWhere('JSON_SEARCH(p.titleJson, \'all\', :val) is not null')
             ->setParameter('val', "%$value%")
-            ->setParameter('key', '$.fr')
             ->orderBy('p.id', 'ASC')
             ->getQuery()
             ->getResult();
     }
+
+    //     /**
+    //     * @return Page[] Returns an array of Page objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('p')
+    //            ->andWhere('p.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('p.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
 
     //    public function findOneBySomeField($value): ?Page
     //    {

@@ -13,7 +13,7 @@ class Page
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: 'json')]
+    #[ORM\Column]
     private array $titleJson = [];
 
     #[ORM\Column]
