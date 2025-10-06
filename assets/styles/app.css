@@ -58,6 +58,9 @@ main {
 .pages {
     grid-column: 4;
 }
+.faq {
+    grid-column: 5;
+}
 
 footer {
     padding: 1rem;

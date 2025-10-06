@@ -26,4 +26,10 @@ class HomeController extends AbstractController
     {
         return $this->render('home/profile.html.twig');
     }
+
+    #[Route('/faq', name: 'app_faq')]
+    public function faq(): Response
+    {
+        return $this->render('home/faq.html.twig');
+    }
 }
