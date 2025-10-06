@@ -15,10 +15,16 @@ use Symfony\Component\Routing\Attribute\Route;
 final class PageController extends AbstractController
 {
     #[Route(name: 'app_page_index', methods: ['GET'])]
-    public function index(PageRepository $pageRepository): Response
+    public function index(PageRepository $pageRepository, Request $request): Response
     {
+        if ($request->query->has("q")) {
+            $pagesToShow = $pageRepository->findByResearch($request->query->get("q"));
+        } else {
+            $pagesToShow = $pageRepository->findAll();
+        }
+
         return $this->render('page/index.html.twig', [
-            'pages' => $pageRepository->findAll(),
+            'pages' => $pagesToShow, 'q' => $request->query->get("q")
         ]);
     }
 
