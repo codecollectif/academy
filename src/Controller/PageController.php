@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Page;
 use App\Form\PageType;
-use App\Form\ResearchPageType;
 use App\Repository\PageRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,20 +17,14 @@ final class PageController extends AbstractController
     #[Route(name: 'app_page_index', methods: ['GET'])]
     public function index(PageRepository $pageRepository, Request $request): Response
     {
-        $form = $this->createForm(ResearchPageType::class, [], [
-            'method' => 'GET',
-        ]);
-        $form->handleRequest($request);
-
-        $pagesToShow = $pageRepository->findAll();
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $researchQuery = $form->getData();
-            $pagesToShow = $pageRepository->findByResearch($researchQuery['Rechercher']);
+        if ($request->query->has("q")) {
+            $pagesToShow = $pageRepository->findByResearch($request->query->get("q"));
+        } else {
+            $pagesToShow = $pageRepository->findAll();
         }
 
         return $this->render('page/index.html.twig', [
-            'pages' => $pagesToShow, 'form' => $form
+            'pages' => $pagesToShow, 'q' => $request->query->get("q")
         ]);
     }
 
