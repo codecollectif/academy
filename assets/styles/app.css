@@ -13,7 +13,16 @@ body {
 }
 
 main {
+    margin-top: 5%;
     flex: 1;
+    width: 50%;
+}
+
+details {
+    margin-left: 5%;
+    margin-bottom: 1%;
+    border-style: solid;
+    border-width: 1px;
 }
 
 .navbar {
@@ -58,6 +67,7 @@ main {
 .pages {
     grid-column: 4;
 }
+
 .faq {
     grid-column: 5;
 }
