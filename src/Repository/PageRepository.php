@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Page;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Scienta\DoctrineJsonFunctions\Query\AST\Functions\Mysql\JsonExtract;
 
 /**
  * @extends ServiceEntityRepository<Page>
@@ -16,12 +17,12 @@ class PageRepository extends ServiceEntityRepository
         parent::__construct($registry, Page::class);
     }
 
-    public function findByResearch(string $key, string $value): array
+    public function findByResearch(string $value): array
     {
-        var_dump($value);
         return $this->createQueryBuilder('p')
-            ->andWhere('p.titleJson = :val')
-            ->setParameter('val', [$key => $value])
+            ->andWhere('JSON_EXTRACT(p.titleJson, :key) LIKE :val')
+            ->setParameter('val', "%$value%")
+            ->setParameter('key', '$.fr')
             ->orderBy('p.id', 'ASC')
             ->getQuery()
             ->getResult();

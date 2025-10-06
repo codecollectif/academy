@@ -27,10 +27,8 @@ final class PageController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $researchQuery = $form->getData();
-            $pagesToShow = $pageRepository->findByResearch('fr', $researchQuery['Rechercher']);
+            $pagesToShow = $pageRepository->findByResearch($researchQuery['Rechercher']);
         }
-
-        var_dump($pageRepository->find(22)->getTitleJson());
 
         return $this->render('page/index.html.twig', [
             'pages' => $pagesToShow, 'form' => $form
