@@ -5,8 +5,6 @@ namespace App\Tests\Controller;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use App\Repository\PageRepository;
 use App\Entity\Page;
-use App\Entity\Category;
-use App\Controller\HomeController;
 
 class HomeControllerTest extends WebTestCase
 {
@@ -14,29 +12,40 @@ class HomeControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $container = static::getContainer();
-
-        $page1 = new Page();
-
-        $page1->setTitleJson(['fr' => 'testPage1']);
-
-        $page2 = new Page();
-
-        $page2->setTitleJson(['fr' => 'testPage2']);
-
-        $pageRepository = $this->createMock(PageRepository::class);
-        $pageRepository->expects(self::once())
-            ->method('findBy')
-            ->willReturn([
-                $page1,
-                $page2
-            ])
-        ;
-
-        $container->set(PageRepository::class, $pageRepository);
+        $this->mockPageRepository();
 
         $crawler = $client->request('GET', '/');
 
         $this->assertResponseIsSuccessful();
+    }
+
+    private function mockPageRepository(): void
+    {
+        $pages = [];
+
+        for ($i = 1; $i <= 2; $i++) {
+            $page = new class ($i) extends Page {
+                public function __construct(private $i)
+                {
+                }
+
+                public function getId(): ?int
+                {
+                    return $this->i;
+                }
+            };
+
+            $page->setTitleJson(['fr' => 'testPage' . $i]);
+
+            $pages[] = $page;
+        }
+
+        $pageRepository = $this->createMock(PageRepository::class);
+        $pageRepository->expects(self::once())
+            ->method('findBy')
+            ->willReturn($pages)
+        ;
+
+        static::getContainer()->set(PageRepository::class, $pageRepository);
     }
 }
