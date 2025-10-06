@@ -19,17 +19,26 @@ class HomeControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
     }
 
+    public function testUserCanGetToFAQ(): void
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', '/faq');
+
+        $this->assertResponseIsSuccessful();
+    }
+
     private function mockPageRepository(): void
     {
         $pages = [];
 
         for ($i = 1; $i <= 2; $i++) {
             $page = new class ($i) extends Page {
-                public function __construct(private $i)
+                public function __construct(private int $i)
                 {
                 }
 
-                public function getId(): ?int
+                public function getId(): int
                 {
                     return $this->i;
                 }
