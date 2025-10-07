@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Page;
 use App\Form\PageType;
 use App\Repository\PageRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,16 +16,23 @@ use Symfony\Component\Routing\Attribute\Route;
 final class PageController extends AbstractController
 {
     #[Route(name: 'app_page_index', methods: ['GET'])]
-    public function index(PageRepository $pageRepository, Request $request): Response
-    {
+    public function index(
+        PageRepository $pageRepository,
+        CategoryRepository $categoryRepository,
+        Request $request
+    ): Response {
         if ($request->query->has("q")) {
             $pagesToShow = $pageRepository->findByResearch($request->query->get("q"));
         } else {
             $pagesToShow = $pageRepository->findAll();
         }
 
+        $categories = $categoryRepository->findAll();
+
         return $this->render('page/index.html.twig', [
-            'pages' => $pagesToShow, 'q' => $request->query->get("q")
+            'pages' => $pagesToShow,
+            'q' => $request->query->get("q"),
+            'categories' => $categories
         ]);
     }
 

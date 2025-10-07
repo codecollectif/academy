@@ -1,6 +1,10 @@
 <form action = "" method="get">
     <label for="f">Filtrer par</label>
     <select id="f" name="f" value="" />
-        <option>Toute catégorie</option
+        <option>Toute catégorie</option>
+        {% for category in categories %}
+        <option>{{ category.titleJson.fr }}</option>
+        {% endfor %}
+    </select>
     <button type="submit">Filtrer</button>
 </form>
