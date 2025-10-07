@@ -27,6 +27,17 @@ class PageRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function findByCategory(string $value): array
+    {
+        return $this->createQueryBuilder('p')
+            ->join('p.category', 'c')
+            ->andWhere('JSON_SEARCH(c.titleJson, \'all\', :val) is not null')
+            ->setParameter('val', "$value")
+            ->orderBy('p.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
     //     /**
     //     * @return Page[] Returns an array of Page objects
     //     */
