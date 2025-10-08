@@ -13,7 +13,19 @@ body {
 }
 
 main {
-    flex: 1;
+    flex-grow: 1;
+}
+
+.questionBlock {
+    display: block;
+    margin-top: 1rem;
+}
+
+details {
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+    border-style: solid;
+    border-width: 1px;
 }
 
 .navbar {
@@ -47,18 +59,6 @@ main {
     font-weight: inherit;
 }
 
-.email {
-    margin: 0;
-}
-
-.home {
-    grid-column: 3;
-}
-
-.pages {
-    grid-column: 4;
-}
-
 footer {
     padding: 1rem;
     text-align: center;
@@ -84,14 +84,6 @@ footer ul {
 
 footer a {
     color: inherit;
-}
-
-.linkedin {
-    grid-column: 2;
-}
-
-.helloasso {
-    grid-column: 1
 }
 
 .newestPages h2 {
