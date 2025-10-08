@@ -28,6 +28,19 @@ details {
     border-width: 1px;
 }
 
+.loginPost, .registerPost, .requestPost {
+    text-align: center;
+
+    section {
+        margin-bottom: 1rem;
+    }
+}
+
+.textLabel, .requestPost label, .registerPost label:not([for="registration_form_agreeTerms"]) {
+    display: block;
+    font-size: 15px;
+}
+
 .navbar {
     font-family: "Germania One", system-ui;
     font-size: 24px;
