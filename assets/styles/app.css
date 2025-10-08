@@ -28,15 +28,15 @@ details {
     border-width: 1px;
 }
 
-.loginPost {
+.loginPost, .registerPost, .requestPost {
     text-align: center;
 }
 
-.loginPost section {
+.loginPost section, .registerPost section, .requestPost section {
     margin-bottom: 1rem;
 }
 
-.textLabel {
+.textLabel, .requestPost label, .registerPost label:not([for="registration_form_agreeTerms"]) {
     display: block;
     font-size: 15px;
 }
