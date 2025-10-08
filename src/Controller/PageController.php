@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Page;
 use App\Form\PageType;
 use App\Repository\PageRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,16 +16,42 @@ use Symfony\Component\Routing\Attribute\Route;
 final class PageController extends AbstractController
 {
     #[Route(name: 'app_page_index', methods: ['GET'])]
-    public function index(PageRepository $pageRepository, Request $request): Response
-    {
-        if ($request->query->has("q")) {
-            $pagesToShow = $pageRepository->findByResearch($request->query->get("q"));
-        } else {
-            $pagesToShow = $pageRepository->findAll();
+    public function index(
+        PageRepository $pageRepository,
+        CategoryRepository $categoryRepository,
+        Request $request
+    ): Response {
+
+        $formResults = ([
+            ($request->query->has("q") && $request->query->get("q")),
+            ($request->query->has("category") && $request->query->get("category"))
+        ]);
+
+        switch ($formResults) {
+            case [true, true]:
+                $pagesToShow = $pageRepository->findByResearchAndCategory(
+                    $request->query->get("q"),
+                    $request->query->get("category")
+                );
+                break;
+            case [true, false]:
+                $pagesToShow = $pageRepository->findByResearch($request->query->get("q"));
+                break;
+            case [false, true]:
+                $pagesToShow = $pageRepository->findBy(['category' => $request->query->get("category")]);
+                break;
+            default:
+                $pagesToShow = $pageRepository->findAll();
+                break;
         }
 
+        $categories = $categoryRepository->findAll();
+
         return $this->render('page/index.html.twig', [
-            'pages' => $pagesToShow, 'q' => $request->query->get("q")
+            'pages' => $pagesToShow,
+            'q' => $request->query->get("q"),
+            'categories' => $categories,
+            'category' => $request->query->get("category")
         ]);
     }
 
