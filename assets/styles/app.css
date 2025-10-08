@@ -59,6 +59,10 @@ details {
     font-weight: inherit;
 }
 
+.email {
+    margin: 0;
+}
+
 footer {
     padding: 1rem;
     text-align: center;
