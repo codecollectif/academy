@@ -30,10 +30,10 @@ details {
 
 .loginPost, .registerPost, .requestPost {
     text-align: center;
-}
 
-.loginPost section, .registerPost section, .requestPost section {
-    margin-bottom: 1rem;
+    section {
+        margin-bottom: 1rem;
+    }
 }
 
 .textLabel, .requestPost label, .registerPost label:not([for="registration_form_agreeTerms"]) {
