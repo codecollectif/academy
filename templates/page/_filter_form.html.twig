@@ -1,9 +1,9 @@
 <form action = "" method="get">
-    <label for="f">Filtrer par</label>
-    <select id="f" name="f" value="" />
+    <label for="category">Filtrer par</label>
+    <select id="category" name="category" value="{{category}}" />
         <option>Toute catégorie</option>
         {% for category in categories %}
-        <option>{{ category.titleJson.fr }}</option>
+        <option value="{{ category.id }}">{{ category.titleJson.fr }}</option>
         {% endfor %}
     </select>
     <button type="submit">Filtrer</button>

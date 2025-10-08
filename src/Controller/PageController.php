@@ -25,9 +25,8 @@ final class PageController extends AbstractController
         if ($request->query->has("q")) {
             $pagesToShow = $pageRepository->findByResearch($request->query->get("q"));
         } else {
-            if ($request->query->has("f") && $request->query->get('f') != 'Toute catégorie') {
-                $pagesToShow = $pageRepository->findByCategory($request->query->get("f
-                "));
+            if ($request->query->has("category") && $request->query->get("category") != 'Toute catégorie') {
+                $pagesToShow = $pageRepository->findBy(['category' => $request->query->get("category")]);
             } else {
                 $pagesToShow = $pageRepository->findAll();
             }
@@ -38,7 +37,8 @@ final class PageController extends AbstractController
         return $this->render('page/index.html.twig', [
             'pages' => $pagesToShow,
             'q' => $request->query->get("q"),
-            'categories' => $categories
+            'categories' => $categories,
+            'category' => $request->query->get("category")
         ]);
     }
 
