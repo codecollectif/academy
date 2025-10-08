@@ -33,7 +33,7 @@ class PageRepository extends ServiceEntityRepository
             ->join('p.category', 'c')
             ->andWhere('c.id = :category')
             ->andWhere('JSON_SEARCH(p.titleJson, \'all\', :q) is not null')
-            ->setParameter('category', "$category")
+            ->setParameter('category', $category)
             ->setParameter('q', "%$query%")
             ->orderBy('p.id', 'ASC')
             ->getQuery()

@@ -21,23 +21,28 @@ final class PageController extends AbstractController
         CategoryRepository $categoryRepository,
         Request $request
     ): Response {
-        $pagesToShow = $pageRepository->findAll();
-        if ($request->query->has("q") && $request->query->get("q") != '') {
-            $pagesToShow = $pageRepository->findByResearch($request->query->get("q"));
-        }
-        if ($request->query->has("category") && $request->query->get("category") != '') {
-                $pagesToShow = $pageRepository->findBy(['category' => $request->query->get("category")]);
-        }
-        if (
-            $request->query->has("q") &&
-            $request->query->get("q") != '' &&
-            $request->query->has("category") &&
-            $request->query->get("category") != ''
-        ) {
+
+        $formResults = ([
+            ($request->query->has("q") && $request->query->get("q")),
+            ($request->query->has("category") && $request->query->get("category"))
+        ]);
+
+        switch ($formResults) {
+            case [true, true]:
                 $pagesToShow = $pageRepository->findByResearchAndCategory(
                     $request->query->get("q"),
                     $request->query->get("category")
                 );
+                break;
+            case [true, false]:
+                $pagesToShow = $pageRepository->findByResearch($request->query->get("q"));
+                break;
+            case [false, true]:
+                $pagesToShow = $pageRepository->findBy(['category' => $request->query->get("category")]);
+                break;
+            default:
+                $pagesToShow = $pageRepository->findAll();
+                break;
         }
 
         $categories = $categoryRepository->findAll();
