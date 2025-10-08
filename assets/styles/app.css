@@ -28,6 +28,19 @@ details {
     border-width: 1px;
 }
 
+.loginPost {
+    text-align: center;
+}
+
+.loginPost section {
+    margin-bottom: 1rem;
+}
+
+.textLabel {
+    display: block;
+    font-size: 15px;
+}
+
 .navbar {
     font-family: "Germania One", system-ui;
     font-size: 24px;
