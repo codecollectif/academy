@@ -21,15 +21,23 @@ final class PageController extends AbstractController
         CategoryRepository $categoryRepository,
         Request $request
     ): Response {
-
-        if ($request->query->has("q")) {
+        $pagesToShow = $pageRepository->findAll();
+        if ($request->query->has("q") && $request->query->get("q") != '') {
             $pagesToShow = $pageRepository->findByResearch($request->query->get("q"));
-        } else {
-            if ($request->query->has("category") && $request->query->get("category") != 'Toute catégorie') {
+        }
+        if ($request->query->has("category") && $request->query->get("category") != 'Toute catégorie') {
                 $pagesToShow = $pageRepository->findBy(['category' => $request->query->get("category")]);
-            } else {
-                $pagesToShow = $pageRepository->findAll();
-            }
+        }
+        if (
+            $request->query->has("q") &&
+            $request->query->get("q") != '' &&
+            $request->query->has("category") &&
+            $request->query->get("category") != 'Toute catégorie'
+        ) {
+                $pagesToShow = $pageRepository->findByResearchAndCategory(
+                    $request->query->get("q"),
+                    $request->query->get("category")
+                );
         }
 
         $categories = $categoryRepository->findAll();
