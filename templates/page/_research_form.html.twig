@@ -4,7 +4,7 @@
       <input type="search" id="q" name="q" value="{{q}}" />
       <label for="category">Filtrer par</label>
       <select id="category" name="category" value="{{category}}" />
-        <option>Toute catégorie</option>
+        <option value="">Toute catégorie</option>
         {% for category in categories %}
         <option value="{{ category.id }}">{{ category.titleJson.fr }}</option>
         {% endfor %}

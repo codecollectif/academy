@@ -25,14 +25,14 @@ final class PageController extends AbstractController
         if ($request->query->has("q") && $request->query->get("q") != '') {
             $pagesToShow = $pageRepository->findByResearch($request->query->get("q"));
         }
-        if ($request->query->has("category") && $request->query->get("category") != 'Toute catégorie') {
+        if ($request->query->has("category") && $request->query->get("category") != '') {
                 $pagesToShow = $pageRepository->findBy(['category' => $request->query->get("category")]);
         }
         if (
             $request->query->has("q") &&
             $request->query->get("q") != '' &&
             $request->query->has("category") &&
-            $request->query->get("category") != 'Toute catégorie'
+            $request->query->get("category") != ''
         ) {
                 $pagesToShow = $pageRepository->findByResearchAndCategory(
                     $request->query->get("q"),
