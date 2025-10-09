@@ -8,10 +8,10 @@
         <section class="newestPages">
             <h2>Nouveautés</h2>
                 <div class="newPagesList">
-                    {% for page in pages %}
-                        <a href={{path("app_page_show", {id: page.id})}}>
+                    {% for chapter in chapters %}
+                        <a href={{path("app_page_show", {id: chapter.id})}}>
                             <div>
-                                <p>{{page.titleJson.fr}} </p>
+                                <p>{{chapter.category.titleJson.fr}} </p>
                             </div>
                         </a>
                     {% endfor %}
