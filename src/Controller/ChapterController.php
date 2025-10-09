@@ -17,6 +17,7 @@ final class ChapterController extends AbstractController
     #[Route(name: 'app_chapter_index', methods: ['GET'])]
     public function index(ChapterRepository $chapterRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         return $this->render('chapter/index.html.twig', [
             'chapters' => $chapterRepository->findAll(),
         ]);
@@ -25,6 +26,7 @@ final class ChapterController extends AbstractController
     #[Route('/new', name: 'app_chapter_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $chapter = new Chapter();
         $form = $this->createForm(ChapterType::class, $chapter);
         $form->handleRequest($request);
@@ -45,6 +47,7 @@ final class ChapterController extends AbstractController
     #[Route('/{id}', name: 'app_chapter_show', methods: ['GET'])]
     public function show(Chapter $chapter): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         return $this->render('chapter/show.html.twig', [
             'chapter' => $chapter,
         ]);
@@ -53,6 +56,7 @@ final class ChapterController extends AbstractController
     #[Route('/{id}/edit', name: 'app_chapter_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Chapter $chapter, EntityManagerInterface $entityManager): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $form = $this->createForm(ChapterType::class, $chapter);
         $form->handleRequest($request);
 
@@ -71,6 +75,7 @@ final class ChapterController extends AbstractController
     #[Route('/{id}', name: 'app_chapter_delete', methods: ['POST'])]
     public function delete(Request $request, Chapter $chapter, EntityManagerInterface $entityManager): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         if ($this->isCsrfTokenValid('delete' . $chapter->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($chapter);
             $entityManager->flush();
