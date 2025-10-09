@@ -19,7 +19,7 @@ class CategoryFixtures extends Fixture
 
         $cat2 = new Category();
 
-        $cat2->setTitleJson(['fr' => 'antesting']);
+        $cat2->setTitleJson(['fr' => 'inventoryCat']);
 
         $manager->persist($cat1);
         $manager->persist($cat2);
