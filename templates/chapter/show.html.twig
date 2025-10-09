@@ -3,7 +3,7 @@
 {% block title %}Chapter{% endblock %}
 
 {% block main %}
-    <h1>Chapter</h1>
+    <h1>Chapitre {{ chapter.category.titleJson.fr }}</h1>
 
     <table class="table">
         <tbody>
@@ -18,9 +18,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_chapter_index') }}">back to list</a>
+    <a href="{{ path('app_chapter_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('app_chapter_edit', {'id': chapter.id}) }}">edit</a>
+    <a href="{{ path('app_chapter_edit', {'id': chapter.id}) }}">Éditer</a>
 
     {{ include('chapter/_delete_form.html.twig') }}
 {% endblock %}
