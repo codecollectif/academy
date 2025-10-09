@@ -9,13 +9,15 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>actions</th>
+                <th>Catégorie</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for chapter in chapters %}
+            {% for chapter in chapters %}
             <tr>
                 <td>{{ chapter.id }}</td>
+                <td>{{ chapter.category.titleJson.fr }}</td>
                 <td>
                     <a href="{{ path('app_chapter_show', {'id': chapter.id}) }}">show</a>
                     <a href="{{ path('app_chapter_edit', {'id': chapter.id}) }}">edit</a>
