@@ -2,32 +2,36 @@
 
 {% block title %}Inventory index{% endblock %}
 
-{% block body %}
-    <h1>Inventory index</h1>
+{% block main %}
+    <h1>Liste des inventaires</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>actions</th>
+                <th>Catégorie</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for inventory in inventories %}
             <tr>
                 <td>{{ inventory.id }}</td>
+                <td>{{ inventory.category.titleJson ? inventory.category.titleJson.fr : '' }}</td>
                 <td>
-                    <a href="{{ path('app_inventory_show', {'id': inventory.id}) }}">show</a>
-                    <a href="{{ path('app_inventory_edit', {'id': inventory.id}) }}">edit</a>
+                    <a href="{{ path('app_inventory_show', {'id': inventory.id}) }}">Plus d'infos</a>
+                    {% if 'ROLE_ADMIN' in app.user.roles %}
+                    <a href="{{ path('app_inventory_edit', {'id': inventory.id}) }}">Éditer</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="2">no records found</td>
+                <td colspan="2">Aucune entrée disponible</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_inventory_new') }}">Create new</a>
+    <a href="{{ path('app_inventory_new') }}">Ajouter un nouvel inventaire</a>
 {% endblock %}

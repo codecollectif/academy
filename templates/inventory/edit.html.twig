@@ -2,12 +2,12 @@
 
 {% block title %}Edit Inventory{% endblock %}
 
-{% block body %}
-    <h1>Edit Inventory</h1>
+{% block main %}
+    <h1>Édition de {{ inventory.category.titleJson.fr }}</h1>
 
-    {{ include('inventory/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('inventory/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('app_inventory_index') }}">back to list</a>
+    <a href="{{ path('app_inventory_index') }}">Retour à la liste</a>
 
     {{ include('inventory/_delete_form.html.twig') }}
 {% endblock %}

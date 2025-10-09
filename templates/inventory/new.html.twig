@@ -2,10 +2,10 @@
 
 {% block title %}New Inventory{% endblock %}
 
-{% block body %}
-    <h1>Create new Inventory</h1>
+{% block main %}
+    <h1>Ajouter un nouvel inventaire</h1>
 
     {{ include('inventory/_form.html.twig') }}
 
-    <a href="{{ path('app_inventory_index') }}">back to list</a>
+    <a href="{{ path('app_inventory_index') }}">Retour à la liste</a>
 {% endblock %}
