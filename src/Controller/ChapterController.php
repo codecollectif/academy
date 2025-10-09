@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Chapter;
 use App\Entity\Category;
-use App\Form\ChapterType;
 use App\Form\CategoryType;
 use App\Repository\ChapterRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -63,7 +62,7 @@ final class ChapterController extends AbstractController
     public function edit(Request $request, Chapter $chapter, EntityManagerInterface $entityManager): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        $form = $this->createForm(ChapterType::class, $chapter);
+        $form = $this->createForm(CategoryType::class, $chapter->getCategory());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
