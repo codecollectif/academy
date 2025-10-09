@@ -61,7 +61,7 @@ final class InventoryController extends AbstractController
     public function edit(Request $request, Inventory $inventory, EntityManagerInterface $entityManager): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        $form = $this->createForm(InventoryType::class, $inventory);
+        $form = $this->createForm(CategoryType::class, $inventory->getCategory());
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
