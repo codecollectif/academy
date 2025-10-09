@@ -3,8 +3,9 @@
 namespace App\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use App\Repository\PageRepository;
-use App\Entity\Page;
+use App\Repository\ChapterRepository;
+use App\Entity\Chapter;
+use App\Entity\Category;
 
 class HomeControllerTest extends WebTestCase
 {
@@ -12,7 +13,7 @@ class HomeControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $this->mockPageRepository();
+        $this->mockChapterRepository();
 
         $crawler = $client->request('GET', '/');
 
@@ -28,12 +29,15 @@ class HomeControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
     }
 
-    private function mockPageRepository(): void
+    private function mockChapterRepository(): void
     {
-        $pages = [];
+        $chapters = [];
 
         for ($i = 1; $i <= 2; $i++) {
-            $page = new class ($i) extends Page {
+            $category = new Category();
+
+            $category->setTitleJson(['fr' => 'testChapter' . $i]);
+            $chapter = new class ($i) extends Chapter {
                 public function __construct(private int $i)
                 {
                 }
@@ -44,17 +48,17 @@ class HomeControllerTest extends WebTestCase
                 }
             };
 
-            $page->setTitleJson(['fr' => 'testPage' . $i]);
+            $chapter->setCategory($category);
 
-            $pages[] = $page;
+            $chapters[] = $chapter;
         }
 
-        $pageRepository = $this->createMock(PageRepository::class);
-        $pageRepository->expects(self::once())
+        $chapterRepository = $this->createMock(ChapterRepository::class);
+        $chapterRepository->expects(self::once())
             ->method('findBy')
-            ->willReturn($pages)
+            ->willReturn($chapters)
         ;
 
-        static::getContainer()->set(PageRepository::class, $pageRepository);
+        static::getContainer()->set(ChapterRepository::class, $chapterRepository);
     }
 }

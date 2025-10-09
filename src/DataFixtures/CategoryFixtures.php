@@ -15,7 +15,7 @@ class CategoryFixtures extends Fixture
     {
         $cat1 = new Category();
 
-        $cat1->setTitleJson(['fr' => 'testing']);
+        $cat1->setTitleJson(['fr' => 'chapterCat']);
 
         $cat2 = new Category();
 
