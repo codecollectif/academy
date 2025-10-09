@@ -14,10 +14,7 @@ class InventoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('category', EntityType::class, [
-                'class' => Category::class,
-                'choice_label' => 'titleJson[fr]',
-            ])
+            ->add('category', CategoryType::class);
         ;
     }
 

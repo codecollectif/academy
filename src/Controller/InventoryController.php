@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Inventory;
 use App\Form\InventoryType;
+use App\Entity\Category;
+use App\Form\CategoryType;
 use App\Repository\InventoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,11 +29,14 @@ final class InventoryController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        $inventory = new Inventory();
-        $form = $this->createForm(InventoryType::class, $inventory);
+
+        $category = new Category();
+        $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $inventory = new Inventory();
+            $inventory->setCategory($category);
             $entityManager->persist($inventory);
             $entityManager->flush();
 
@@ -39,7 +44,6 @@ final class InventoryController extends AbstractController
         }
 
         return $this->render('inventory/new.html.twig', [
-            'inventory' => $inventory,
             'form' => $form,
         ]);
     }
