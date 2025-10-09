@@ -17,6 +17,7 @@ final class InventoryController extends AbstractController
     #[Route(name: 'app_inventory_index', methods: ['GET'])]
     public function index(InventoryRepository $inventoryRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         return $this->render('inventory/index.html.twig', [
             'inventories' => $inventoryRepository->findAll(),
         ]);
@@ -25,6 +26,7 @@ final class InventoryController extends AbstractController
     #[Route('/new', name: 'app_inventory_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $inventory = new Inventory();
         $form = $this->createForm(InventoryType::class, $inventory);
         $form->handleRequest($request);
@@ -45,6 +47,7 @@ final class InventoryController extends AbstractController
     #[Route('/{id}', name: 'app_inventory_show', methods: ['GET'])]
     public function show(Inventory $inventory): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         return $this->render('inventory/show.html.twig', [
             'inventory' => $inventory,
         ]);
@@ -53,6 +56,7 @@ final class InventoryController extends AbstractController
     #[Route('/{id}/edit', name: 'app_inventory_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Inventory $inventory, EntityManagerInterface $entityManager): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $form = $this->createForm(InventoryType::class, $inventory);
         $form->handleRequest($request);
 
@@ -71,6 +75,7 @@ final class InventoryController extends AbstractController
     #[Route('/{id}', name: 'app_inventory_delete', methods: ['POST'])]
     public function delete(Request $request, Inventory $inventory, EntityManagerInterface $entityManager): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
         if ($this->isCsrfTokenValid('delete' . $inventory->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($inventory);
             $entityManager->flush();
