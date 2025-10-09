@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Chapter;
+use App\Entity\Category;
 use App\Form\ChapterType;
+use App\Form\CategoryType;
 use App\Repository\ChapterRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -27,19 +29,23 @@ final class ChapterController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        $chapter = new Chapter();
-        $form = $this->createForm(ChapterType::class, $chapter);
+
+        $category = new Category();
+        $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $chapter = new Chapter();
+            $chapter->setCategory($category);
+
             $entityManager->persist($chapter);
             $entityManager->flush();
+
 
             return $this->redirectToRoute('app_chapter_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('chapter/new.html.twig', [
-            'chapter' => $chapter,
             'form' => $form,
         ]);
     }

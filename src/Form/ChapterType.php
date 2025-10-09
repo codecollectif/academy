@@ -6,6 +6,7 @@ use App\Entity\Category;
 use App\Entity\Chapter;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use App\Form\CategoryType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,10 +15,7 @@ class ChapterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('category', EntityType::class, [
-                'class' => Category::class,
-                'choice_label' => 'titleJson[fr]',
-            ])
+            ->add('category', CategoryType::class);
         ;
     }
 
