@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Chapter{% endblock %}
+
+{% block main %}
+    <h1>Ajouter un nouveau chapitre</h1>
+
+    {{ include('chapter/_form.html.twig') }}
+
+    <a href="{{ path('app_chapter_index') }}">Retour à la liste</a>
+{% endblock %}

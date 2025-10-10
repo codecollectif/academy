@@ -13,8 +13,7 @@ class CategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('titleJson')
-        ;
+            ->add('titleJson');
 
         $builder->get('titleJson')
             ->addModelTransformer(new CallbackTransformer(
