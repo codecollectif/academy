@@ -17,7 +17,10 @@
             </tr>
         </tbody>
     </table>
-
+    <section>
+        {% for page in chapter.category.pages %}
+        <div><a href={{path('app_page_show', {id: page.id})}}>{{page.titleJson.fr}}</a></div>
+        {% endfor %}
     <a href="{{ path('app_chapter_index') }}">Retour à la liste</a>
 
     <a href="{{ path('app_chapter_edit', {'id': chapter.id}) }}">Éditer</a>
