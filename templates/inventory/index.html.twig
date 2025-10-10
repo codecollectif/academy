@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inventory index{% endblock %}
+
+{% block main %}
+    <h1>Liste des inventaires</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Catégorie</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for inventory in inventories %}
+            <tr>
+                <td>{{ inventory.id }}</td>
+                <td>{{ inventory.category.titleJson ? inventory.category.titleJson.fr : '' }}</td>
+                <td>
+                    <a href="{{ path('app_inventory_show', {'id': inventory.id}) }}">Plus d'infos</a>
+                    {% if 'ROLE_ADMIN' in app.user.roles %}
+                    <a href="{{ path('app_inventory_edit', {'id': inventory.id}) }}">Éditer</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">Aucune entrée disponible</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_inventory_new') }}">Ajouter un nouvel inventaire</a>
+{% endblock %}
