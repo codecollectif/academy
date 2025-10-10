@@ -85,7 +85,6 @@ final class ChapterController extends AbstractController
             $entityManager->remove($chapter);
             $entityManager->flush();
         }
-
         return $this->redirectToRoute('app_chapter_index', [], Response::HTTP_SEE_OTHER);
     }
 }
