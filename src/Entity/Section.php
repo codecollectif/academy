@@ -16,14 +16,14 @@ class Section
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::ARRAY)]
-    private array $titleJson = [];
-
     /**
      * @var Collection<int, Chapter>
      */
     #[ORM\OneToMany(targetEntity: Chapter::class, mappedBy: 'section')]
     private Collection $chapters;
+
+    #[ORM\Column]
+    private array $titleJson = [];
 
     public function __construct()
     {

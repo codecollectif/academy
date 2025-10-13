@@ -6,6 +6,7 @@ use App\Entity\Section;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\CallbackTransformer;
 
 class SectionType extends AbstractType
 {
@@ -13,6 +14,19 @@ class SectionType extends AbstractType
     {
         $builder
             ->add('titleJson')
+        ;
+
+        $builder->get('titleJson')
+            ->addModelTransformer(new CallbackTransformer(
+                function (array $titleJson): string {
+                    // transform the array to a string
+                    return $titleJson["fr"] ?? "";
+                },
+                function (string $title): array {
+                    // transform the string back to an array
+                    return ["fr" => $title];
+                }
+            ))
         ;
     }
 
