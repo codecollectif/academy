@@ -1,15 +1,14 @@
 <search>
-    <form action="" method="get">
+    <form method="get">
       <label for="q">Chercher une page</label>
-      <input type="search" id="q" name="q" value="{{q}}" />
+      <input type="search" id="q" name="q" value="{{q}}">
       <label for="category">Filtrer par</label>
-      <select id="category" name="category" value="{{category}}" />
+      <select id="category" name="category">
         <option value="">Toute catégorie</option>
         {% for category in categories %}
         <option value="{{ category.id }}">{{ category.titleJson.fr }}</option>
         {% endfor %}
       </select>
       <button type="submit">Rechercher</button>
-</form>
     </form>
 </search>
