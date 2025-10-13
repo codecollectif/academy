@@ -3,13 +3,14 @@
 namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Page;
 use App\Entity\Category;
 use App\DataFixtures\CategoryFixtures;
 use App\Repository\CategoryRepository;
 use Doctrine\Persistence\ObjectManager;
 
-class PageFixtures extends Fixture
+class PageFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -36,5 +37,12 @@ class PageFixtures extends Fixture
         $manager->persist($page3);
 
         $manager->flush();
+    }
+
+    public function getDependencies(): array
+    {
+        return [
+            CategoryFixtures::class
+        ];
     }
 }
