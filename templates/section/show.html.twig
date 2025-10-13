@@ -2,8 +2,8 @@
 
 {% block title %}Section{% endblock %}
 
-{% block body %}
-    <h1>Section</h1>
+{% block main %}
+    <h1>Section {{ section.titleJson.fr }}</h1>
 
     <table class="table">
         <tbody>
@@ -12,15 +12,15 @@
                 <td>{{ section.id }}</td>
             </tr>
             <tr>
-                <th>TitleJson</th>
+                <th>Titre</th>
                 <td>{{ section.titleJson ? section.titleJson|join(', ') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_section_index') }}">back to list</a>
+    <a href="{{ path('app_section_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('app_section_edit', {'id': section.id}) }}">edit</a>
+    <a href="{{ path('app_section_edit', {'id': section.id}) }}">Éditer</a>
 
     {{ include('section/_delete_form.html.twig') }}
 {% endblock %}

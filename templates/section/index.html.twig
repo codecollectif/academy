@@ -2,15 +2,15 @@
 
 {% block title %}Section index{% endblock %}
 
-{% block body %}
-    <h1>Section index</h1>
+{% block main %}
+    <h1>Liste des sections</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>TitleJson</th>
-                <th>actions</th>
+                <th>Titre</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -19,17 +19,17 @@
                 <td>{{ section.id }}</td>
                 <td>{{ section.titleJson ? section.titleJson|join(', ') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_section_show', {'id': section.id}) }}">show</a>
-                    <a href="{{ path('app_section_edit', {'id': section.id}) }}">edit</a>
+                    <a href="{{ path('app_section_show', {'id': section.id}) }}">Plus d'infos</a>
+                    <a href="{{ path('app_section_edit', {'id': section.id}) }}">Éditer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Aucune entrée disponible</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_section_new') }}">Create new</a>
+    <a href="{{ path('app_section_new') }}">Ajouter une nouvelle section</a>
 {% endblock %}
