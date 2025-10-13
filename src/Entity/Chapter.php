@@ -17,6 +17,10 @@ class Chapter
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
+    #[ORM\ManyToOne(inversedBy: 'chapters')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Section $section = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -30,6 +34,18 @@ class Chapter
     public function setCategory(Category $category): static
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getSection(): ?Section
+    {
+        return $this->section;
+    }
+
+    public function setSection(?Section $section): static
+    {
+        $this->section = $section;
 
         return $this;
     }
