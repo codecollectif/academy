@@ -11,24 +11,24 @@
 
         {{ form_errors(registrationForm) }}
         {{ form_start(registrationForm) }}
-            <section>
+            <div>
                 {{ form_row(registrationForm.email, {
                     label: 'Adresse email'
                 }) }}
-            </section>
-            <section>
+            </div>
+            <div>
                 {{ form_row(registrationForm.plainPassword, {
                     label: 'Mot de passe'
                 }) }}
-            <section>
-            </section>
+            <div>
+            </div>
                 {{ form_row(registrationForm.agreeTerms, {
                     label: "J'accepte les termes et conditions"
                 }) }}
-            </section>
-            <section>
+            </div>
+            <div>
                 <button type="submit" class="btn">Inscription</button>
-            </section>
+            </div>
         {{ form_end(registrationForm) }}
     </div>
 {% endblock %}
