@@ -6,7 +6,6 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use App\Entity\Page;
 use App\Entity\Category;
-use App\DataFixtures\CategoryFixtures;
 use App\Repository\CategoryRepository;
 use Doctrine\Persistence\ObjectManager;
 

@@ -5,8 +5,6 @@ namespace App\DataFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use App\DataFixtures\CategoryFixtures;
-use App\DataFixtures\SectionFixtures;
 use App\Entity\Chapter;
 use App\Entity\Category;
 use App\Entity\Section;
