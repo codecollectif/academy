@@ -17,10 +17,16 @@
             </tr>
         </tbody>
     </table>
-
+    <ul>
+        {% for chapter in section.chapters %}
+        <li><a href={{path('app_chapter_show', {id: chapter.id})}}>{{chapter.category.titleJson.fr}}</a></li>
+        {% endfor %}
+    </ul>
     <a href="{{ path('app_section_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('app_section_edit', {'id': section.id}) }}">Éditer</a>
+    {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
+        <a href="{{ path('app_section_edit', {'id': section.id}) }}">Éditer</a>
+        {{ include('section/_delete_form.html.twig') }}
+    {% endif %}
 
-    {{ include('section/_delete_form.html.twig') }}
 {% endblock %}

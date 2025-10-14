@@ -18,7 +18,6 @@ final class ChapterController extends AbstractController
     #[Route(name: 'app_chapter_index', methods: ['GET'])]
     public function index(ChapterRepository $chapterRepository): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
         return $this->render('chapter/index.html.twig', [
             'chapters' => $chapterRepository->findAll(),
         ]);
@@ -52,7 +51,6 @@ final class ChapterController extends AbstractController
     #[Route('/{id}', name: 'app_chapter_show', methods: ['GET'])]
     public function show(Chapter $chapter): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
         return $this->render('chapter/show.html.twig', [
             'chapter' => $chapter,
         ]);
