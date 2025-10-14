@@ -19,7 +19,6 @@ final class InventoryController extends AbstractController
     #[Route(name: 'app_inventory_index', methods: ['GET'])]
     public function index(InventoryRepository $inventoryRepository): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
         return $this->render('inventory/index.html.twig', [
             'inventories' => $inventoryRepository->findAll(),
         ]);
@@ -51,7 +50,6 @@ final class InventoryController extends AbstractController
     #[Route('/{id}', name: 'app_inventory_show', methods: ['GET'])]
     public function show(Inventory $inventory): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
         return $this->render('inventory/show.html.twig', [
             'inventory' => $inventory,
         ]);

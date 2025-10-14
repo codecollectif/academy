@@ -17,7 +17,6 @@ final class SectionController extends AbstractController
     #[Route(name: 'app_section_index', methods: ['GET'])]
     public function index(SectionRepository $sectionRepository): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
         return $this->render('section/index.html.twig', [
             'sections' => $sectionRepository->findAll(),
         ]);
@@ -47,7 +46,6 @@ final class SectionController extends AbstractController
     #[Route('/{id}', name: 'app_section_show', methods: ['GET'])]
     public function show(Section $section): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
         return $this->render('section/show.html.twig', [
             'section' => $section,
         ]);
