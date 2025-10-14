@@ -127,3 +127,7 @@ footer a {
     color: gray;
     flex: 1;
 }
+
+.hidden {
+    display: none;
+}

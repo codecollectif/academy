@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Category;
+use App\Repository\CategoryRepository;
 use App\Entity\Page;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -14,12 +15,17 @@ class PageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $category = $options['category'];
         $builder
             ->add('titleJson')
             ->add('contentJson')
             ->add('category', EntityType::class, [
                 'class' => Category::class,
+                'choices' => [$category],
                 'choice_label' => 'titleJson[fr]',
+                'row_attr' => [
+                    'class' => 'hidden'
+                ],
             ])
         ;
 
@@ -50,6 +56,7 @@ class PageType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Page::class,
+            'category' => null
         ]);
     }
 }

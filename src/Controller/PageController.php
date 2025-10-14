@@ -55,19 +55,23 @@ final class PageController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_page_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
+    #[Route('/{id}/new', name: 'app_page_new', methods: ['GET', 'POST'])]
+    public function new(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        CategoryRepository $categoryRepository,
+        int $id
+    ): Response {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
         $page = new Page();
-        $form = $this->createForm(PageType::class, $page);
+        $form = $this->createForm(PageType::class, $page, ['category' => $categoryRepository->find($id)]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($page);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_page_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_page_new', ['id' => $id], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('page/new.html.twig', [
