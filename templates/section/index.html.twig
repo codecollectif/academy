@@ -20,7 +20,9 @@
                 <td>{{ section.titleJson ? section.titleJson|join(', ') : '' }}</td>
                 <td>
                     <a href="{{ path('app_section_show', {'id': section.id}) }}">Plus d'infos</a>
-                    <a href="{{ path('app_section_edit', {'id': section.id}) }}">Éditer</a>
+                    {% if 'ROLE_ADMIN' in app.user.roles %}
+                        a href="{{ path('app_section_edit', {'id': section.id}) }}">Éditer</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -31,5 +33,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_section_new') }}">Ajouter une nouvelle section</a>
+   {% if 'ROLE_ADMIN' in app.user.roles %}
+        <a href="{{ path('app_section_new') }}">Ajouter une nouvelle section</a>
+    {% endif %}
 {% endblock %}
