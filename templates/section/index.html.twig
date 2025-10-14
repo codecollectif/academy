@@ -3,37 +3,14 @@
 {% block title %}Section index{% endblock %}
 
 {% block main %}
-    <h1>Liste des sections</h1>
+    <h1>Leçons</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for section in sections %}
-            <tr>
-                <td>{{ section.id }}</td>
-                <td>{{ section.titleJson ? section.titleJson|join(', ') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_section_show', {'id': section.id}) }}">Plus d'infos</a>
-                    {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
-                        a href="{{ path('app_section_edit', {'id': section.id}) }}">Éditer</a>
-                    {% endif %}
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">Aucune entrée disponible</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-   {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
+    {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
         <a href="{{ path('app_section_new') }}">Ajouter une nouvelle section</a>
     {% endif %}
+    <ul>
+        {% for section in sections %}
+            <li><a href="{{ path('app_section_show', {'id': section.id})}}">{{section.titleJson.fr}}</a></li>
+        {% endfor %}
+    </ul>
 {% endblock %}
