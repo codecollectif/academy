@@ -4,35 +4,15 @@
 
 {% block main %}
     <h1>Page {{ page.titleJson.fr }}</h1>
+    <div>
+        {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ page.id }}</td>
-            </tr>
-            <tr>
-                <th>Titre</th>
-                <td>{{ page.titleJson ? page.titleJson.fr : '' }}</td>
-            </tr>
-            <tr>
-                <th>Category</th>
-                <td>{{ page.category.titleJson ? page.category.titleJson.fr : '' }}</td>
-            </tr>
-            <tr>
-                <th>Contenu</th>
-                <td>{{ page.contentJson ? page.contentJson.fr : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <a href="{{ path('app_page_edit', {'id': page.id}) }}">Éditer</a>
 
-    <a href="{{ path('app_page_index') }}">Retour à la liste</a>
+        {{ include('page/_delete_form.html.twig') }}
 
-    {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
-
-    <a href="{{ path('app_page_edit', {'id': page.id}) }}">Éditer</a>
-
-    {{ include('page/_delete_form.html.twig') }}
-
-    {% endif %}
+        {% endif %}
+        {{ page.contentJson ? page.contentJson.fr : '' }}
+    </div>
+    <a href="{{ path('app_page_index') }}">Retour</a>
 {% endblock %}
