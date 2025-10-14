@@ -6,6 +6,7 @@ use App\Entity\Chapter;
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\ChapterRepository;
+use App\Repository\SectionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,11 +24,15 @@ final class ChapterController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_chapter_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
+    #[Route('/{id}/new', name: 'app_chapter_new', methods: ['GET', 'POST'])]
+    public function new(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        SectionRepository $sectionRepository,
+        int $id
+    ): Response {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-
+        $section = $sectionRepository->find($id);
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
@@ -35,12 +40,13 @@ final class ChapterController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $chapter = new Chapter();
             $chapter->setCategory($category);
+            $chapter->setSection($section);
 
             $entityManager->persist($chapter);
             $entityManager->flush();
 
 
-            return $this->redirectToRoute('app_chapter_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_section_show', ['id' => $id], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('chapter/new.html.twig', [
