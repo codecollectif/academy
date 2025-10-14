@@ -20,7 +20,7 @@
                 <td>{{ chapter.category.titleJson.fr }}</td>
                 <td>
                     <a href="{{ path('app_chapter_show', {'id': chapter.id}) }}">Plus d'infos</a>
-                    {% if 'ROLE_ADMIN' in app.user.roles %}
+                    {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
                         <a href="{{ path('app_chapter_edit', {'id': chapter.id}) }}">Éditer</a>
                     {% endif %}
                 </td>
@@ -33,7 +33,7 @@
         </tbody>
     </table>
 
-    {% if 'ROLE_ADMIN' in app.user.roles %}
+    {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
         <a href="{{ path('app_chapter_new') }}">Ajouter un nouveau chapitre</a>
     {% endif %}
 {% endblock %}

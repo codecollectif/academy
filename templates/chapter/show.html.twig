@@ -24,7 +24,7 @@
     </ul>
     <a href="{{ path('app_chapter_index') }}">Retour à la liste</a>
 
-    {% if 'ROLE_ADMIN' in app.user.roles %}
+    {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
         <a href="{{ path('app_chapter_edit', {'id': chapter.id}) }}">Éditer</a>
         {{ include('chapter/_delete_form.html.twig') }}
     {% endif %}

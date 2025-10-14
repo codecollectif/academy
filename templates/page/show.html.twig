@@ -28,7 +28,7 @@
 
     <a href="{{ path('app_page_index') }}">Retour à la liste</a>
 
-    {% if 'ROLE_ADMIN' in app.user.roles %}
+    {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
 
     <a href="{{ path('app_page_edit', {'id': page.id}) }}">Éditer</a>
 
