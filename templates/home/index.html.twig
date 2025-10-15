@@ -11,7 +11,7 @@
                     {% for chapter in chapters %}
                         <a href={{path("app_chapter_show", {id: chapter.id})}}>
                             <div>
-                                <p>{{chapter.category.titleJson.fr}} </p>
+                                <p>{{chapter.section.titleJson.fr}} - {{chapter.category.titleJson.fr}} </p>
                             </div>
                         </a>
                     {% endfor %}
