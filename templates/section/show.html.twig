@@ -3,20 +3,23 @@
 {% block title %}Section{% endblock %}
 
 {% block main %}
-    <h1>Section {{ section.titleJson.fr }}</h1>
+    <article>
+        {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
+            <div class="adminPanel">
+                <a href="{{ path('app_section_edit', {'id': section.id}) }}">Modifier la section</a>
+                <span></span>
+                {{ include('section/_delete_form.html.twig') }}
+            </div>
+        {% endif %}
 
-    {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
-        <a href="{{ path('app_section_edit', {'id': section.id}) }}">Modifier la section</a>
-        {{ include('section/_delete_form.html.twig') }}
-        <a href="{{ path('app_chapter_new') }}">Ajouter un nouveau chapitre à la section</a>
-    {% endif %}
-
-    <ul>
-        {% for chapter in section.chapters %}
-        <li><a href={{path('app_chapter_show', {id: chapter.id})}}>{{chapter.category.titleJson.fr}}</a></li>
-        {% endfor %}
-    </ul>
+        <h1>Section {{ section.titleJson.fr }}</h1>
+        
+        <ul>
+            {% for chapter in section.chapters %}
+            <li><a href={{path('app_chapter_show', {id: chapter.id})}}>{{chapter.category.titleJson.fr}}</a></li>
+            {% endfor %}
+        </ul>
     
-    <a href="{{ path('app_section_index') }}">Retour à la liste des sections</a>
-
+        <a href="{{ path('app_section_index') }}">Retour à la liste des sections</a>
+    </article>
 {% endblock %}
