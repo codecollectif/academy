@@ -3,16 +3,15 @@
 {% block title %}Page{% endblock %}
 
 {% block main %}
-    <h1>Page {{ page.titleJson.fr }}</h1>
-    <div>
+    <article>
         {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
-
-        <a href="{{ path('app_page_edit', {'id': page.id}) }}">Éditer</a>
-
-        {{ include('page/_delete_form.html.twig') }}
-
+            <div class="adminPanel">
+                <a href="{{ path('app_page_edit', {'id': page.id}) }}">Modifier la page</a>
+                {{ include('page/_delete_form.html.twig') }}
+            </div>
         {% endif %}
-        {{ page.contentJson ? page.contentJson.fr : '' }}
-    </div>
-    <a href="{{ path('app_page_index') }}">Retour</a>
+        <h1>{{ page.titleJson.fr }}</h1>
+        <p>{{ page.contentJson ? page.contentJson.fr : '' }}</p>
+        <a href="{{ path('app_page_index') }}">Retour</a>
+    </article>
 {% endblock %}
