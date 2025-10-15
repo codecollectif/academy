@@ -3,14 +3,16 @@
 {% block title %}Section index{% endblock %}
 
 {% block main %}
-    <h1>Leçons</h1>
+    <article>
 
-    {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
-        <a href="{{ path('app_section_new') }}">Ajouter une nouvelle section</a>
-    {% endif %}
-    <ul>
-        {% for section in sections %}
-            <li><a href="{{ path('app_section_show', {'id': section.id})}}">{{section.titleJson.fr}}</a></li>
+        {% if app.user and 'ROLE_ADMIN' in app.user.roles %}
+            <h1>Leçons <a href="{{ path('app_section_new') }}">+</a></h1>
+        {% else %}
+            <h1>Leçons</h1>
+        {% endif %}
+        <ul>
+            {% for section in sections %}
+                <li><a href="{{ path('app_section_show', {'id': section.id})}}">{{section.titleJson.fr}}</a></li>
         {% endfor %}
-    </ul>
+        </ul>
 {% endblock %}
