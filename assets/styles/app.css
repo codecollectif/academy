@@ -134,7 +134,11 @@ article {
     margin-right: auto;
     max-width: 65ch;
 
-    h1 {
+    h1, .btn {
+        text-align: center;
+    }
+
+    a {
         text-align: center;
     }
 }
@@ -161,4 +165,8 @@ article {
 
 h1 a {
     text-decoration: none;
+}
+
+.aBlock {
+    display: block;
 }
