@@ -29,17 +29,17 @@ details {
     border-width: 1px;
 }
 
-.loginPost, .registerPost, .requestPost {
+.centerForm {
     text-align: center;
 
     div {
         margin-bottom: 1rem;
     }
-}
 
-.textLabel, .requestPost label, .registerPost label:not([for="registration_form_agreeTerms"]) {
-    display: block;
-    font-size: 15px;
+    label:not([for="registration_form_agreeTerms"], [for="_remember_me"]) {
+        display: block;
+        font-size: smaller;
+    }
 }
 
 .navbar {

@@ -3,7 +3,7 @@
 {% block title %}Se connecter!{% endblock %}
 
 {% block main %}
-    <div class = "loginPost">
+    <div class = "loginPost centerForm">
         <form method="post">
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
