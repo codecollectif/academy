@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use App\Repository\ChapterRepository;
 use App\Entity\Chapter;
 use App\Entity\Category;
+use App\Entity\Section;
 
 class HomeControllerTest extends WebTestCase
 {
@@ -35,8 +36,10 @@ class HomeControllerTest extends WebTestCase
 
         for ($i = 1; $i <= 2; $i++) {
             $category = new Category();
+            $section = new Section();
 
             $category->setTitleJson(['fr' => 'testChapter' . $i]);
+            $section->setTitleJson(['fr' => 'testSection' . $i]);
             $chapter = new class ($i) extends Chapter {
                 public function __construct(private int $i)
                 {
@@ -49,6 +52,7 @@ class HomeControllerTest extends WebTestCase
             };
 
             $chapter->setCategory($category);
+            $chapter->setSection($section);
 
             $chapters[] = $chapter;
         }
