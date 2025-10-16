@@ -143,13 +143,9 @@ article {
     }
 }
 
-.questions {
-    max-width: 180ch;
-}
-
 .questionBlock {
     margin-top: 1rem;
-    max-width: 180ch;
+    max-width: 65ch;
 
     details {
         padding: 1rem;
