@@ -8,7 +8,7 @@
 
         {{ include('page/_form.html.twig', {'button_label': 'Valider'}) }}
 
-        <a href="{{ path('app_page_index') }}">Retour</a>
+        <a href="{{ path('app_page_show', {id : page.id}) }}">Retour</a>
 
     </article>
 {% endblock %}
