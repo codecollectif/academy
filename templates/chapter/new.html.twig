@@ -3,9 +3,11 @@
 {% block title %}New Chapter{% endblock %}
 
 {% block main %}
-    <h1>Ajouter un nouveau chapitre</h1>
+    <article>
+        <h1>Ajouter un nouveau chapitre</h1>
 
-    {{ include('chapter/_form.html.twig') }}
+        {{ include('chapter/_form.html.twig') }}
 
-    <a href="{{ path('app_chapter_index') }}">Retour à la liste</a>
+        <a href="{{ path('app_chapter_index') }}">Retour</a>
+    </article>
 {% endblock %}

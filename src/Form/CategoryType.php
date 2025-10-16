@@ -7,13 +7,16 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class CategoryType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('titleJson');
+            ->add('titleJson', TextType::class, [
+                'label_format' => 'Titre'
+            ]);
 
         $builder->get('titleJson')
             ->addModelTransformer(new CallbackTransformer(
