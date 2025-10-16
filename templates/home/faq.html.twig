@@ -3,29 +3,39 @@
 {% block title %}FAQ{% endblock %}
 
 {% block main %}
-    <div class="questionBlock">
-        <details>
-            <summary>En quoi consiste ce site?</summary>
-            <p>Ce site sert à vous aider à gagner en compétences dans la programmation web. Vous découvrirez de nouveaux langages,
-            des nouvelles techniques et autres par exemple.</p>
-        </details>
-        <details>
-            <summary>Par où commencer?</summary>
-            <p>Vous devriez vous créer un compte pour commencer. Un lien est disponible dans la barre de navigation.</p>
-        </details>
-        <details>
-            <summary>J'ai oublié mon mot de passe, comment le réinitialiser?</summary>
-            <p>Vous pouvez demander une réinitialisation dans la page de connexion. Après avoir saisi votre adresse email,
-            on vous enverra un mail avec un lien pour réintialiser le mot de passe.</p>
-        </details>
-        <details>
-            <summary>Comment débloquer de nouveaux chapitres?</summary>
-            <p>Le débloquage de chapitres se fait par la complétions d'autres chapitres. Cela vous permettra d'avoir un chemin
-            plus progressif et d'avoir plus de facilité à trouver des sujets de votre niveau.</p>
-        </details>
-        <details>
-            <summary>Est-ce que ce site est payant?</summary>
-            <p>Ce site, ainsi que toutes les fonctionnalités disponibles, sont 100% gratuit.</p>
-        </details>
-    </div>
+    <article class="questions">
+        <h1>FAQ</h1>
+        <article class="questionBlock">
+            <h2>Infos généraux</h2>
+            <details>
+                <summary>En quoi consiste ce site?</summary>
+                <p>Ce site sert à vous aider à gagner en compétences dans la programmation web. Vous découvrirez de nouveaux langages,
+                des nouvelles techniques et autres par exemple.</p>
+            </details>
+            <details>
+                <summary>Par où commencer?</summary>
+                <p>Vous devriez vous créer un compte pour commencer. Un lien est disponible dans la barre de navigation. 
+                Créer un compte vous permettra de sauvegarder toute progression.</p>
+            </details>
+            <details>
+                <summary>J'ai oublié mon mot de passe, comment le réinitialiser?</summary>
+                <p>Vous pouvez demander une réinitialisation dans la page de connexion. Après avoir saisi votre adresse email,
+                on vous enverra un mail avec un lien pour réintialiser le mot de passe.</p>
+            </details>
+            <details>
+                <summary>Comment débloquer de nouveaux chapitres?</summary>
+                <p>Le débloquage de chapitres se fait par la complétions d'autres chapitres. Cela vous permettra d'avoir un chemin
+                plus progressif et d'avoir plus de facilité à trouver des sujets de votre niveau.</p>
+            </details>
+            <details>
+                <summary>Est-ce que ce site est payant?</summary>
+                <p>Ce site, ainsi que toutes les fonctionnalités disponibles, sont 100% gratuit.</p>
+            </details>
+        </article>
+    </article>
+{% endblock %}
+{% block qFooter %}
+<footer class="qFooter">
+    <p>Vous n'avez pas votre réponse? <a href="">Posez votre question ici</a></p>
+</footer>
 {% endblock %}

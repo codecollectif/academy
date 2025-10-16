@@ -17,11 +17,6 @@ main {
     margin-top: 1rem;
 }
 
-.questionBlock {
-    display: block;
-    margin-top: 1rem;
-}
-
 details {
     margin-left: 1rem;
     margin-bottom: 1rem;
@@ -77,7 +72,7 @@ details {
     margin: 0;
 }
 
-footer {
+.pageFooter {
     padding: 1rem;
     text-align: center;
     border-top: 1px solid gray;
@@ -85,6 +80,11 @@ footer {
     background-color: black;
     color: white;
     text-shadow: 0 0 5px black;
+}
+
+.qFooter {
+    padding: 1rem;
+    text-align: center;
 }
 
 footer p {
@@ -100,7 +100,7 @@ footer ul {
     list-style: none;
 }
 
-footer a {
+.pageFooter a {
     color: inherit;
 }
 
@@ -140,6 +140,19 @@ article {
 
     a {
         text-align: center;
+    }
+}
+
+.questions {
+    max-width: 180ch;
+}
+
+.questionBlock {
+    margin-top: 1rem;
+    max-width: 180ch;
+
+    details {
+        padding: 1rem;
     }
 }
 
