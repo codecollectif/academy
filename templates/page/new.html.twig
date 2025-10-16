@@ -3,9 +3,11 @@
 {% block title %}Création{% endblock %}
 
 {% block main %}
-    <h1>Ajouter une nouvelle page</h1>
+    <article>
+        <h1>Ajouter une nouvelle page</h1>
 
-    {{ include('page/_form.html.twig', {'button_label': 'Ajouter'})}}
+        {{ include('page/_form.html.twig', {'button_label': 'Ajouter'})}}
 
-    <a href="{{ path('app_page_index') }}">Retour à la liste</a>
+        <a href="{{ path('app_page_index') }}">Retour</a>
+    </article>
 {% endblock %}
