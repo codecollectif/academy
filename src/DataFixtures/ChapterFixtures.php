@@ -23,6 +23,8 @@ class ChapterFixtures extends Fixture implements DependentFixtureInterface
         $chapter2->setSection($this->getReference(SectionFixtures::SEC_TWO_REFERENCE, Section::class));
         $chapter2->setCategory($this->getReference(CategoryFixtures::CAT_TWO_REFERENCE, Category::class));
 
+        $chapter1->addFollowingChapter($chapter2);
+
         $manager->persist($chapter1);
         $manager->persist($chapter2);
         $manager->flush();
