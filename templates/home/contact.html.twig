@@ -5,14 +5,14 @@
 {% block main %}
     <article>
         <h1>Contact</h1>
-        <form class="centerForm" action="">
+        <form class="centerForm" action="{{path('app_contact_email')}}">
             <div>
                 <label>Email</label>
-                <input type="email">
+                <input type="email" name="email" value="">
             </div>
             <div>
                 <label>Contenu</label>
-                <textarea rows=10 cols=60></textarea>
+                <textarea rows=10 cols=60 name="content" value=""></textarea>
             </div>
             <div>
                 <button class="btn">Envoyer</button>
