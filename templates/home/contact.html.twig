@@ -5,17 +5,17 @@
 {% block main %}
     <article>
         <h1>Contact</h1>
-        <form class="centerForm" action="{{path('app_contact_email')}}">
+        <form class="centerForm" action="{{path('app_contact_email')}}" method="POST">
             <div>
-                <label>Email</label>
-                <input type="email" name="email" value="">
+                <label for="email" >Email</label>
+                <input type="email" name="email" id="email" value="">
             </div>
             <div>
-                <label>Contenu</label>
-                <textarea rows=10 cols=60 name="content" value=""></textarea>
+                <label for="content">Contenu</label>
+                <textarea rows=10 cols=60 name="content" id="content" value=""></textarea>
             </div>
             <div>
-                <button class="btn">Envoyer</button>
+                <button type="submit" class="btn">Envoyer</button>
             </div>
         </form>
     </article>

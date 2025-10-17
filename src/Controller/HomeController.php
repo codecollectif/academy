@@ -42,12 +42,12 @@ class HomeController extends AbstractController
         return $this->render('home/contact.html.twig');
     }
 
-    #[Route('/contact/email', name: 'app_contact_email')]
-    public function email(MailerInterface $mailer, Request $request): Response
+    #[Route('/contact/email', name: 'app_contact_email', methods: ['POST'])]
+    public function sendEmail(MailerInterface $mailer, Request $request): Response
     {
         $email = (new Email())
-            ->from($request->request->get('email'))
-            ->to('hureaux.lucas@gmail.com')
+            ->from($this->getUser()->getEmail())
+            ->to($request->request->get('email'))
             ->subject('Email')
             ->text($request->request->get('content'));
 
