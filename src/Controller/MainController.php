@@ -46,8 +46,8 @@ class MainController extends AbstractController
     public function sendEmail(MailerInterface $mailer, Request $request): Response
     {
         $email = (new Email())
-            ->from($this->getUser()->getEmail())
-            ->to($request->request->get('email'))
+            ->from($request->request->get('email'))
+            ->to('admin@boulot.fr')
             ->subject('Email')
             ->text($request->request->get('content'));
 
