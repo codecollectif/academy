@@ -10,7 +10,7 @@ use App\Repository\ChapterRepository;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 
-class HomeController extends AbstractController
+class MainController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
     public function index(ChapterRepository $chapterRepository): Response
