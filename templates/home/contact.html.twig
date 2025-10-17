@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block main %}
+    <article>
+        <h1>Contact</h1>
+        <form class="centerForm" action="">
+            <div>
+                <label>Email</label>
+                <input type="email">
+            </div>
+            <div>
+                <label>Contenu</label>
+                <textarea rows=10 cols=60></textarea>
+            </div>
+            <div>
+                <button class="btn">Envoyer</button>
+            </div>
+        </form>
+    </article>
+{% endblock %}
