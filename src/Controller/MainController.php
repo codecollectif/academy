@@ -4,10 +4,13 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ChapterRepository;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
-class HomeController extends AbstractController
+class MainController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
     public function index(ChapterRepository $chapterRepository): Response
@@ -31,5 +34,24 @@ class HomeController extends AbstractController
     public function faq(): Response
     {
         return $this->render('home/faq.html.twig');
+    }
+
+    #[Route('/contact', name: 'app_contact')]
+    public function contact(): Response
+    {
+        return $this->render('home/contact.html.twig');
+    }
+
+    #[Route('/contact/email', name: 'app_contact_email', methods: ['POST'])]
+    public function sendEmail(MailerInterface $mailer, Request $request): Response
+    {
+        $email = (new Email())
+            ->from($request->request->get('email'))
+            ->to('admin@boulot.fr')
+            ->subject('Email')
+            ->text($request->request->get('content'));
+
+        $mailer->send($email);
+        return $this->redirectToRoute('app_home');
     }
 }
